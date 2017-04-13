@@ -1,9 +1,11 @@
 package metier;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,7 +17,7 @@ public class Contact {
 	private String nom;
 	private String prenom;
 	private String email;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Adresse adresse;
 
 	public int getId() {

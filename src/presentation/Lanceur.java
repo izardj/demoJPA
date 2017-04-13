@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import metier.Adresse;
 import metier.Contact;
 
 public class Lanceur {
@@ -19,10 +20,16 @@ public class Lanceur {
 		tx.begin();
 
 		// 3: Création d'un Objet métier
+		Adresse s = new Adresse();
+		s.setVille("LYON");
+		s.setNumRue("120 rue massena");
+		s.setCodePostal("69006");
+		
 		Contact c = new Contact();
 		c.setNom("Izard");
 		c.setPrenom("Jérôme");
 		c.setEmail("izard.jerome@free.fr");
+		c.setAdresse(s);
 
 		// 4: Persitance de l'objet métier
 		em.persist(c);
