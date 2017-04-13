@@ -1,10 +1,9 @@
 package metier;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("TELEFILM")
+//@DiscriminatorValue("TELEFILM")
 public class TeleFilm extends Film {
 	private String chaine;
 

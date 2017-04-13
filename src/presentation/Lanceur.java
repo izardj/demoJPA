@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import metier.Adresse;
 import metier.Contact;
 import metier.LongMetrage;
+import metier.TeleFilm;
 
 public class Lanceur {
 
@@ -35,10 +36,15 @@ public class Lanceur {
 		LongMetrage lm = new LongMetrage();
 		lm.setNomFilm("film1");
 		lm.setCinema("GAUMONT");
+		
+		TeleFilm tf = new TeleFilm();
+		tf.setChaine("TF1");
+		tf.setNomFilm("Josephine");
 
 		// 4: Persitance de l'objet métier
 		em.persist(c);
 		em.persist(lm);
+		em.persist(tf);
 
 		// 5: Validation de la transaction
 		tx.commit();
