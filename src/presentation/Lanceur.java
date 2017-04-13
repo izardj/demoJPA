@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 
 import metier.Adresse;
 import metier.Contact;
+import metier.LongMetrage;
 
 public class Lanceur {
 
@@ -30,9 +31,14 @@ public class Lanceur {
 		c.setPrenom("Jérôme");
 		c.setEmail("izard.jerome@free.fr");
 		c.setAdresse(s);
+		
+		LongMetrage lm = new LongMetrage();
+		lm.setNomFilm("film1");
+		lm.setCinema("GAUMONT");
 
 		// 4: Persitance de l'objet métier
 		em.persist(c);
+		em.persist(lm);
 
 		// 5: Validation de la transaction
 		tx.commit();
