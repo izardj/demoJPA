@@ -11,14 +11,18 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 
 @Entity
+// Héritage SINGLE_TABLE
 // @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 // @DiscriminatorColumn(name="TYPE_FILM")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+// Héritage TABLE_PER_CLASS
+// @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+// Héritage JOINED
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Film {
 
 	@Id
-	// @GeneratedValue(strategy = GenerationType.AUTO)
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.TABLE)
 	private int idFilm;
 	private String nomFilm;
 	@ManyToMany
