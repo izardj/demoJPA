@@ -1,11 +1,13 @@
 package metier;
 
+import java.util.Collection;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -19,6 +21,8 @@ public class Contact {
 	private String email;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Adresse adresse;
+	@ManyToMany(mappedBy="contacts")
+	private Collection<Film> films;
 
 	public int getId() {
 		return id;
@@ -63,6 +67,14 @@ public class Contact {
 	@Override
 	public String toString() {
 		return "Contact [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + "]";
+	}
+
+	public Collection<Film> getFilms() {
+		return films;
+	}
+
+	public void setFilms(Collection<Film> films) {
+		this.films = films;
 	}
 
 }
