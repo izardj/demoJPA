@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Contact {
@@ -14,6 +15,8 @@ public class Contact {
 	private String nom;
 	private String prenom;
 	private String email;
+	@ManyToOne
+	private Adresse adresse;
 
 	public int getId() {
 		return id;
@@ -45,6 +48,14 @@ public class Contact {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
 	}
 
 	@Override
