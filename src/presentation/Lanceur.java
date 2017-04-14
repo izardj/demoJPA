@@ -78,13 +78,13 @@ public class Lanceur {
 		tx.begin();
 		em.remove(f);
 		tx.commit();
-		
+
 		// Récupérer tous les films
 		List<Film> listeFilm = em.createQuery("SELECT f from Film f").getResultList();
 		for (Film fl : listeFilm) {
 			System.out.println(fl);
 		}
-		
+
 		// Rechercher les films par nom de Film
 		Query q = em.createQuery("SELECT f FROM Film f WHERE f.nomFilm = :leNom");
 		q.setParameter("leNom", "film1");
@@ -92,7 +92,14 @@ public class Lanceur {
 		for (Film fl : listeFilm2) {
 			System.out.println(fl);
 		}
-		
+
+		// Rechercher les films dont le nom de Film contient la lettre i
+		Query q2 = em.createQuery("SELECT f FROM Film f WHERE f.nomFilm LIKE :leNom");
+		q2.setParameter("leNom", "%i%");
+		List<Film> listeFilm3 = q2.getResultList();
+		for (Film fl : listeFilm3) {
+			System.out.println(fl);
+		}
 
 		// 6: Fermeture de l'unité persitance
 		em.close();
