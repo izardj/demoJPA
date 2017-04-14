@@ -118,7 +118,21 @@ public class Lanceur {
 		for (Contact c4 : lst) {
 			System.out.println(c4);
 		}
-
+		
+		// Récupérer toutes les adresses
+		List<Adresse> allAdr = em.createNamedQuery("Adresse.findAll").getResultList();
+		for (Adresse adresse : allAdr) {
+			System.out.println(adresse);
+		}
+		
+		// Récupérer les adresses dont le nom de rue contient un mot
+		Query q5 = em.createNamedQuery("Adresse.findByRue");
+		q5.setParameter("numRue", "%a%");
+		List<Adresse> keywordAdr = q5.getResultList();
+		for (Adresse adresse : keywordAdr) {
+			System.out.println(adresse);
+		}
+		
 		// 6: Fermeture de l'unité persitance
 		em.close();
 		emf.close();
