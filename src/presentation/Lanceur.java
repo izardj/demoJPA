@@ -112,6 +112,13 @@ public class Lanceur {
 			System.out.println(ct);
 		}
 
+		// Exemple d'utilisation d'une requête nommée (@NamedQuery)
+		Query q4 = em.createNamedQuery("Contact.findAll");
+		List<Contact> lst = q4.getResultList();
+		for (Contact c4 : lst) {
+			System.out.println(c4);
+		}
+
 		// 6: Fermeture de l'unité persitance
 		em.close();
 		emf.close();
