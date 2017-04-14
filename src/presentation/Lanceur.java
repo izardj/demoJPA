@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import metier.Adresse;
 import metier.Contact;
@@ -81,6 +82,14 @@ public class Lanceur {
 		// Récupérer tous les films
 		List<Film> listeFilm = em.createQuery("SELECT f from Film f").getResultList();
 		for (Film fl : listeFilm) {
+			System.out.println(fl);
+		}
+		
+		// Rechercher les films par nom de Film
+		Query q = em.createQuery("SELECT f FROM Film f WHERE f.nomFilm = :leNom");
+		q.setParameter("leNom", "film1");
+		List<Film> listeFilm2 = q.getResultList();
+		for (Film fl : listeFilm2) {
 			System.out.println(fl);
 		}
 		
