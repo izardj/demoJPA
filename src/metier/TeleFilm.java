@@ -16,4 +16,9 @@ public class TeleFilm extends Film {
 		this.chaine = chaine;
 	}
 
+	@Override
+	public String toString() {
+		return "TeleFilm [chaine=" + chaine + ", toString()=" + super.toString() + "]";
+	}
+
 }

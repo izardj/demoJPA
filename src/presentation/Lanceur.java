@@ -55,7 +55,18 @@ public class Lanceur {
 
 		// 5: Validation de la transaction
 		tx.commit();
-
+		
+		// Récupérer le film d'ID 1
+		Film f = em.find(Film.class, 1);
+		System.out.println(f);
+		
+		// Modifier le titre du film
+		f.setNomFilm("film modifié");
+		tx.begin();
+		em.merge(f);
+		tx.commit();
+		System.out.println(f);
+		
 		// 6: Fermeture de l'unité persitance
 		em.close();
 		emf.close();
