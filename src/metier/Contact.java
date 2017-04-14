@@ -21,7 +21,7 @@ public class Contact {
 	private String email;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Adresse adresse;
-	@ManyToMany(mappedBy="contacts")
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	private Collection<Film> films;
 
 	public int getId() {

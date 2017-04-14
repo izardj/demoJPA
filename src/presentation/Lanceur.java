@@ -1,5 +1,8 @@
 package presentation;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -7,6 +10,7 @@ import javax.persistence.Persistence;
 
 import metier.Adresse;
 import metier.Contact;
+import metier.Film;
 import metier.LongMetrage;
 import metier.TeleFilm;
 
@@ -41,10 +45,13 @@ public class Lanceur {
 		tf.setChaine("TF1");
 		tf.setNomFilm("Josephine");
 
+		Collection<Film> films = new ArrayList<Film>();
+		films.add(lm);
+		films.add(tf);
+		c.setFilms(films);
+		
 		// 4: Persitance de l'objet métier
 		em.persist(c);
-		em.persist(lm);
-		em.persist(tf);
 
 		// 5: Validation de la transaction
 		tx.commit();

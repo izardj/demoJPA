@@ -1,9 +1,10 @@
 package metier;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-//@DiscriminatorValue("LONG")
+@DiscriminatorValue("LONG")
 public class LongMetrage extends Film {
 
 	private String cinema;
