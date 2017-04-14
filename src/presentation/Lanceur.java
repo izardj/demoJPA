@@ -101,6 +101,10 @@ public class Lanceur {
 			System.out.println(fl);
 		}
 
+		// Exemple de getSingleResult()
+		Film f5 = (Film) em.createQuery("SELECT f FROM Film f WHERE f.idFilm = 2").getSingleResult();
+		System.out.println(f5);
+		
 		// 6: Fermeture de l'unité persitance
 		em.close();
 		emf.close();
