@@ -30,43 +30,53 @@ public class Lanceur {
 		s.setVille("LYON");
 		s.setNumRue("120 rue massena");
 		s.setCodePostal("69006");
-		
+
 		Contact c = new Contact();
 		c.setNom("Izard");
 		c.setPrenom("Jérôme");
 		c.setEmail("izard.jerome@free.fr");
 		c.setAdresse(s);
-		
+
 		LongMetrage lm = new LongMetrage();
 		lm.setNomFilm("film1");
 		lm.setCinema("GAUMONT");
-		
+
 		TeleFilm tf = new TeleFilm();
 		tf.setChaine("TF1");
 		tf.setNomFilm("Josephine");
+
+		TeleFilm tf2 = new TeleFilm();
+		tf2.setChaine("TF1");
+		tf2.setNomFilm("Les experts");
 
 		Collection<Film> films = new ArrayList<Film>();
 		films.add(lm);
 		films.add(tf);
 		c.setFilms(films);
-		
+
 		// 4: Persitance de l'objet métier
+		em.persist(tf2);
 		em.persist(c);
 
 		// 5: Validation de la transaction
 		tx.commit();
-		
+
 		// Récupérer le film d'ID 1
 		Film f = em.find(Film.class, 1);
 		System.out.println(f);
-		
+
 		// Modifier le titre du film
 		f.setNomFilm("film modifié");
 		tx.begin();
 		em.merge(f);
 		tx.commit();
 		System.out.println(f);
-		
+
+		// Suppresion film d'ID 1
+		tx.begin();
+		em.remove(f);
+		tx.commit();
+
 		// 6: Fermeture de l'unité persitance
 		em.close();
 		emf.close();
