@@ -2,6 +2,7 @@ package presentation;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -76,6 +77,13 @@ public class Lanceur {
 		tx.begin();
 		em.remove(f);
 		tx.commit();
+		
+		// Récupérer tous les films
+		List<Film> listeFilm = em.createQuery("SELECT f from Film f").getResultList();
+		for (Film fl : listeFilm) {
+			System.out.println(fl);
+		}
+		
 
 		// 6: Fermeture de l'unité persitance
 		em.close();
