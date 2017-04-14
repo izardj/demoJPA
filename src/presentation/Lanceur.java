@@ -104,7 +104,14 @@ public class Lanceur {
 		// Exemple de getSingleResult()
 		Film f5 = (Film) em.createQuery("SELECT f FROM Film f WHERE f.idFilm = 2").getSingleResult();
 		System.out.println(f5);
-		
+
+		// Exemple de jointure entre Contact et Adresse
+		Query q3 = em.createQuery("SELECT c FROM Contact c LEFT JOIN c.adresse");
+		List<Contact> listeC = q3.getResultList();
+		for (Contact ct : listeC) {
+			System.out.println(ct);
+		}
+
 		// 6: Fermeture de l'unité persitance
 		em.close();
 		emf.close();

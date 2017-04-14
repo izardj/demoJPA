@@ -66,7 +66,7 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "Contact [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + "]";
+		return "Contact [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", adresse=" + adresse +"]";
 	}
 
 	public Collection<Film> getFilms() {
